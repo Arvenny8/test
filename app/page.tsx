@@ -48,6 +48,7 @@ interface Address {
   subDistrict: string;
   zipPost: string;
 }
+
 export default function Home() {
   const [schoolList, setSchoolList] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
@@ -71,6 +72,10 @@ export default function Home() {
     fetchData();
   }, []);
 
+  const scroll = () => {
+    console.log("dwdwd");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   const pageCount = Math.ceil(schoolList.length / itemsPerPage);
 
   const handlePageChange = ({ selected }: { selected: number }) => {
@@ -178,7 +183,7 @@ export default function Home() {
           disabledClassName={
             "pagination__link bg-gray-200 text-gray-400 px-4 py-2 rounded-md mr-2 ml-2 cursor-not-allowed"
           }
-          // onPageActive={() => window.scrollTo(10, 10)}
+          onClick={scroll}
         />
       </div>
     </div>
